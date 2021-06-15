@@ -93,15 +93,9 @@ para mais informações).
 ## Executando o Projeto
 Primeiramente faça o clone do projeto em sua maquina e acesse a pasta do projeto.
 
-### Alternativa 1
-Configurei tudo no docker, basta executar:
-```
-sudo apt install -y docker docker-compose
-sudo docker-compose up
-```
+#### Neo4j
+Faça o pull da imagem do docker oficial do [neo4j](https://hub.docker.com/_/neo4j)
 
-### Alternativa 2
-Caso não queira usar o docker para subir o projeto.
 #### Criando ambiente de desenvolvimento e Instalando dependências
 Primeiramente voce irá precisar do [python3.8](https://www.python.org/downloads/release/python-388/)
 Caso esteja usando Linux, pode ser que os comandos lhe ajudem:
@@ -110,15 +104,17 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt install python3.8 python3.8-dev python3.8-venv 
 ```
-Enfim, na pasta do projeto iremos criar o ambiente de virtual e instalar as dependencias do projeto:
+Na pasta do projeto iremos criar o ambiente de virtual e instalar as dependencias do projeto:
 ```
 python3.8 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+Por fim, para executar o projeto:
+```
+python app.py
+```
 
-#### Neo4j
-Faça o pull da imagem do docker oficial do [neo4j](https://hub.docker.com/_/neo4j)
 
 ## Testes Unitários
 Para executar os testes unitários, é necessário executar primeiro o tópico 
