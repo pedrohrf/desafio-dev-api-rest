@@ -124,10 +124,149 @@ pip install -r requirements_testing.txt
 pytest
 ```
 
-## Como usar 
-Para informações das chamadas e retornos consulte o swagger na raiz do projeto. Para visualiza-lo melhor 
-copie o conteudo em: https://editor.swagger.io/ ou pode usar um [script](https://gist.github.com/oseiskar/dbd51a3727fc96dcf5ed189fca491fb3).
+## Serviços
+Para consultar facilmente os payloads basta acessar a [pasta](https://github.com/pedrohrf/desafio-dev-api-rest/tree/master/dosafio/src/services/payloads).
+### Account
+#### [POST] /account
+Cria uma nova conta
 
+Entrada:
+```
+{
+    "person_id": int,
+    "daily_withdraw_limit": float,
+    "is_active": bool,
+    "type": int
+}
+```
+Saida:
+```
+{
+    "result": int
+}
+```
+#### [PUT] /account
+Altera os dados de uma conta
+
+Entrada:
+```
+{
+    "daily_withdraw_limit": float,
+    "is_active": bool
+}
+```
+Saida:
+```
+{
+    "result": {
+        "id": int,
+        "daily_withdraw_limit": float,
+        "is_active": bool,
+        "type": int
+        "balance": float
+    }
+}
+```
+#### [GET] /account?account_id=int
+Consulta uma conta
+
+Saida:
+```
+{
+    "result": {
+        "id": int,
+        "daily_withdraw_limit": float,
+        "is_active": bool,
+        "type": int
+        "balance": float
+    }
+}
+```
+### Person
+#### [POST] /person
+Cria uma pessoa
+
+Entrada:
+```
+{
+    "name": str,
+    "cpf": str,
+    "born_date": str
+}
+```
+Saida:
+```
+{
+    "result": int
+}
+```
+#### [GET] /person?person_id=int
+Consulta uma pessoa
+
+Saida:
+```
+{
+    "result": {
+        "id": int,
+        "name": str,
+        "cpf": str,
+        "born_date": str
+    }
+}
+```
+### Transaction
+#### [POST] /transaction/deposit
+Cria um transação de deposito
+
+Entrada:
+```
+{
+    "account_id": int,
+    "value": float
+}
+```
+Saida:
+```
+{
+    "result": int
+}
+```
+#### [POST] /transaction/withdraw
+Cria um transação de saque
+
+Entrada:
+```
+{
+    "account_id": int,
+    "value": float
+}
+```
+Saida:
+```
+{
+    "result": int
+}
+```
+#### [GET] /transacions?account_id=int
+Busca transações
+
+Paramentros Opcionais:
+```
+type: WITHDRAW or DEPOSIT
+initial_date: str
+end_date: str
+```
+
+Saida:
+```
+{
+    "result": [{
+        "id": int,
+        "value": float,
+        "creation_date": str
+    }]
+}
+```
 ## Considerações finais
 Finalizo pedindo desculpas pelos erros de português e com uma frase do Edsger Dijkstra: 
 > Testing shows the presence, not the absence of bugs.
