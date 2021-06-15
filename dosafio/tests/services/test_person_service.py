@@ -3,7 +3,7 @@ from unittest import TestCase, mock
 from src.entities.person import Person
 from src.services import person_services
 from tests.helpers.neo4j_mock import Neo4jMock
-from src.adapters.db_query import match, create
+from src.helpers.adapters.db_query import match, create
 from datetime import date
 
 

@@ -1,6 +1,6 @@
 from src.components import database as db
-from src.adapters.db_query.create import account as c_account
-from src.adapters.db_query.update import account as u_account
+from src.helpers.adapters.db_query.create import account as c_account
+from src.helpers.adapters.db_query.update import account as u_account
 from src.entities.account import Account
 from src.business.account import search as search_account
 from src.business.person import search as search_person

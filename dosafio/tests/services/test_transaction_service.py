@@ -4,7 +4,7 @@ from unittest import TestCase, mock
 from src.entities.transaction import Withdraw, Deposit
 from src.services import transaction_services
 from tests.helpers.neo4j_mock import Neo4jMock
-from src.adapters.db_query import match, create
+from src.helpers.adapters.db_query import match, create
 from src.entities.account import Account
 from datetime import datetime
 from src.helpers.enum.messages import ResponsesMessages

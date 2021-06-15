@@ -5,7 +5,7 @@ from src.entities.person import Person
 from src.helpers.enum.messages import ResponsesMessages
 from src.services import account_services
 from tests.helpers.neo4j_mock import Neo4jMock
-from src.adapters.db_query import match, create, update
+from src.helpers.adapters.db_query import match, create, update
 from datetime import date, datetime
 
 

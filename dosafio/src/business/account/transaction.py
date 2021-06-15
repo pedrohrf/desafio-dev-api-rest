@@ -4,8 +4,8 @@ from src.entities.account import Account
 from src.business.account import search
 from src.exceptions import BadRequestException, NotFoundException
 from src.helpers.enum import messages
-from src.adapters.db_query.create import deposit as c_deposit, withdraw as c_withdraw
-from src.adapters.db_query.match import transactions
+from src.helpers.adapters.db_query.create import deposit as c_deposit, withdraw as c_withdraw
+from src.helpers.adapters.db_query.match import transactions
 from datetime import datetime
 
 

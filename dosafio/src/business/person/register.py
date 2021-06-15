@@ -1,6 +1,6 @@
 from src.entities.person import Person
 from src.components import database as db
-from src.adapters.db_query.create import person
+from src.helpers.adapters.db_query.create import person
 
 
 def from_create_person_service(**data):

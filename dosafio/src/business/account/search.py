@@ -2,7 +2,7 @@ from src.components import database as db
 from src.entities.account import Account
 from src.exceptions import NotFoundException
 from src.helpers.enum import messages
-from src.adapters.db_query.match import account
+from src.helpers.adapters.db_query.match import account
 
 
 def by_id(account_id) -> Account:
