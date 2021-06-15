@@ -86,7 +86,7 @@ Tentei ao máximo fazer um código limpo sem redundâncias e fácil de ler de um
 
 ### Testes unitários
 Na pasta [tests](https://github.com/pedrohrf/desafio-dev-api-rest/tree/master/dosafio/tests) 
-estão os testes unitários, fiz 100% da cobertura do código, excluindo algumas partes as quais
+estão os testes unitários, fiz 95% da cobertura do código, excluindo algumas partes as quais
 não fazia sentido testar (verifique o arquivo [setup.cfg](https://github.com/pedrohrf/desafio-dev-api-rest/blob/master/dosafio/setup.cfg) 
 para mais informações).
 
@@ -126,9 +126,28 @@ pytest
 
 ## Serviços
 Para consultar facilmente os payloads basta acessar a [pasta](https://github.com/pedrohrf/desafio-dev-api-rest/tree/master/dosafio/src/services/payloads).
+
+Para todos os serviços caso falhe uma regra de negócio, será retornado 400 ou 404, com o payload:
+```
+{
+    "result": {
+        "message": str
+    }
+}
+```
+Caso algum parâmetro seja inválido, será retornado 400, com o payload:
+```
+{
+    "result": dict
+}
+```
+
 ### Account
 #### [POST] /account
 Cria uma nova conta
+
+##### Regras de Negócio
+1. Validação se pessoa informada existe
 
 Entrada:
 ```
@@ -148,9 +167,13 @@ Saida:
 #### [PUT] /account
 Altera os dados de uma conta
 
+##### Regras de Negócio
+1. Validação se conta informada existe
+
 Entrada:
 ```
 {
+    "account_id": int
     "daily_withdraw_limit": float,
     "is_active": bool
 }
@@ -186,6 +209,9 @@ Saida:
 #### [POST] /person
 Cria uma pessoa
 
+##### Pendencias:
+1. Checar se cpf já existe na base, validar formato do cpf.
+
 Entrada:
 ```
 {
@@ -218,6 +244,11 @@ Saida:
 #### [POST] /transaction/deposit
 Cria um transação de deposito
 
+##### Regras de Negócio
+1. Validação se conta informada existe
+
+2. Validação se conta informada está ativa
+
 Entrada:
 ```
 {
@@ -233,6 +264,12 @@ Saida:
 ```
 #### [POST] /transaction/withdraw
 Cria um transação de saque
+
+##### Regras de Negócio
+1. Validação se conta informada existe
+2. Validação se conta informada está ativa
+3. Validação se conta informada tem saldo suficiente
+4. Validação se conta informada alcançou o limite de saque diário
 
 Entrada:
 ```
