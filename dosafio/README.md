@@ -114,7 +114,10 @@ Por fim, para executar o projeto:
 ```
 python app.py
 ```
-
+Fique atento as variáveis de ambiente, pois talvez seja necessário adapta-las:
+DB_URI
+DB_USER
+DB_PASSWORD
 
 ## Testes Unitários
 Para executar os testes unitários, é necessário executar primeiro o tópico 
